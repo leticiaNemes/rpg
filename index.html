@@ -1,414 +1,679 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚨 ALERTA BULLYING - Denuncie Agora! </title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-      
-        
-        body {
-            background: linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #dc143c 100%);
-            background-size: 400% 400%;
-            animation: none;
-            padding-top: 80px;
-            font-family: 'Arial', sans-serif;
-            color: #333;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(44, 44, 44, 0.95) !important;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 5px 20px rgba(255, 69, 0, 0.5);
-        }
-        
-        section {
-            min-height: 100vh;
-            padding: 120px 20px;
-            position: relative;
-        }
-        
-        .emergency-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #dc143c, #ff4500);
-            border: 5px solid #fff;
-            color: #fff !important;
-            font-size: 2.2rem;
-            line-height: 70px;
-            text-align: center;
-            display: block;
-            box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7); }
-            50% { box-shadow: 0 12px 45px rgba(220, 20, 60, 1); }
-            100% { box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7); }
-        }
-        
-        .emergency-btn:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 20px 50px rgba(220, 20, 60, 0.9);
-            color: #fff !important;
-            text-decoration: none;
-        }
-        
-        .emergency-btn i {
-            position: relative;
-            top: 2px;
-        }
-        
-        .hero-section {
-            background: rgba(255, 255, 255, 0.98);
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-            min-height: calc(100vh - 80px);
-            padding: 0;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,69,0,0.1) 0%, transparent 70%);
-            animation: float 20s infinite linear;
-        }
-        
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(50px, 50px) rotate(360deg); }
-        }
-        
-        .hero-title {
-            font-size: 6rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #ff4500, #dc143c, #ff8c00, #ff4500);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 4px 4px 15px rgba(0,0,0,0.4);
-            animation: titleGlow 3s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 2;
-        }
-        
-        @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 20px rgba(255,69,0,0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(220,20,60,0.8)); }
-        }
-        
-        .hero-subtitle {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #dc143c;
-            margin-bottom: 40px;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        .emergency-panel {
-            background: linear-gradient(135deg, #ff4500, #ff8c00);
-            color: #fff;
-            border-radius: 25px;
-            padding: 50px;
-            box-shadow: 0 25px 60px rgba(255, 69, 0, 0.6);
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .emergency-panel::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .emergency-number {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
-            display: block;
-            margin: 20px 0;
-        }
-        
-        .stats-card, .content-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            height: 100%;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-        
-        .stats-card:hover, .content-card:hover {
-            transform: translateY(-15px);
-            border-color: #ff4500;
-            box-shadow: 0 25px 60px rgba(255,69,0,0.3);
-        }
-        
-        .stats-number {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #ff4500, #dc143c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Estilo para cards da seção bullying */
-        .bullying-image-card {
-            height: 100%;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-        
-        .bullying-image-card:hover {
-            transform: translateY(-15px);
-            border-color: #ff4500;
-            box-shadow: 0 25px 60px rgba(255,69,0,0.3);
-        }
-        
-        .bullying-image-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .hero-section img {
-            width: 100%;
-            height: calc(100vh - 80px);
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-            margin: 0;
-            float: none;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-
 <body>
-    <!-- Botão de Emergência Fixo - TELEFONE CENTRALIZADO E MAIOR -->
     
-<!-- Botão de Emergência Fixo -->
-<a href="#oqfazer" class="emergency-btn" title="Ver números">
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; line-height:1;">
-        <i class="fas fa-phone" style="font-size:1.2rem; margin-bottom:4px;"></i>
-        <span style="font-size:0.8rem; font-weight:bold;"></span>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #4c4d4f;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+
+  .navbar {
+    background-color: rgba(33, 37, 41, 0.96) !important;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar-brand {
+    color: #ffc107 !important;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 5px;
+  }
+
+  .nav-link:hover {
+    color: #ffc107 !important;
+  }
+
+  .navbar-toggler {
+    border-color: #ffc107;
+  }
+
+  .btn-outline-success {
+    color: #ffc107;
+    border-color: #ffc107;
+  }
+
+  .btn-outline-success:hover {
+    background-color: #ffc107;
+    color: #212529;
+    border-color: #ffc107;
+  }
+
+ 
+  section {
+    width: 90%;
+    max-width: 1150px;
+    margin: 60px auto;
+    padding: 15px 0;
+    background-color: transparent;
+    scroll-margin-top: 100px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffc107;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 38px;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+
+  h3, h4 {
+    font-size: 26px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+  }
+
+  p {
+    line-height: 1.8;
+    font-size: 17px;
+    text-align: justify;
+    margin-bottom: 18px;
+  }
+
+ 
+  .bloco-texto {
+    max-width: 950px;
+    margin: 0 auto 35px auto;
+    padding: 5px 10px;
+  }
+
+  .bloco-texto p {
+    margin-bottom: 18px;
+    line-height: 1.8;
+    font-size: 17px;
+    text-align: justify;
+  }
+
+  .introducao {
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 30px auto;
+  }
+
+  .destaque {
+    color: #ffc107;
+    font-weight: bold;
+  }
+
+
+  .fichas-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .ficha-card {
+    width: 260px;
+    text-align: center;
+  }
+
+  .ficha-card p {
+    text-align: center;
+    color: #ffc107;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .ficha-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #212529;
+    padding: 8px;
+  }
+
+ 
+  .list-group {
+    max-width: 950px;
+    margin: 25px auto 0 auto;
+  }
+
+  .list-group-item {
+    background-color: rgba(33, 37, 41, 0.55) !important;
+    color: white !important;
+    border: none !important;
+    border-left: 4px solid #ffc107 !important;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    line-height: 1.5;
+  }
+
+  .list-group-item:hover {
+    background-color: rgba(33, 37, 41, 0.85) !important;
+  }
+
+
+  .cards-sistemas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+    margin-top: 35px;
+    align-items: stretch;
+  }
+
+  .cards-sistemas .card {
+    width: 100% !important;
+    height: 440px;
+    background-color: rgba(33, 37, 41, 0.95);
+    color: white;
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+
+  .cards-sistemas .card-img-top {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background-color: #212529;
+    padding: 8px;
+  }
+
+  .cards-sistemas .card-body {
+    padding: 12px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .cards-sistemas .card-body h1,
+  .cards-sistemas .card-body h2,
+  .cards-sistemas .card-body h3,
+  .cards-sistemas .card-body h4,
+  .cards-sistemas .card-body h5,
+  .cards-sistemas .card-body h6 {
+    color: #ffc107;
+    font-size: 17px;
+    text-align: center;
+    margin: 0 0 10px 0;
+  }
+
+  .cards-sistemas .card-text {
+    font-size: 13px;
+    line-height: 1.45;
+    text-align: justify;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  
+  #curiosidades p {
+    max-width: 950px;
+    margin: 0 auto 20px auto;
+  }
+
+  
+  .form-container {
+    background-color: rgba(33, 37, 41, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    border: 1px solid rgba(255, 193, 7, 0.35);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  }
+
+  .form-control,
+  .form-select {
+    border: 1px solid rgba(255, 193, 7, 0.35);
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+  }
+
+  .btn-warning {
+    font-weight: bold;
+  }
+
+  
+  @media (max-width: 1200px) {
+    .cards-sistemas {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-sistemas .card {
+      height: 430px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section {
+      width: 92%;
+      margin: 45px auto;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+
+    h3, h4 {
+      font-size: 23px;
+    }
+
+    p,
+    .bloco-texto p {
+      font-size: 15px;
+      text-align: left;
+    }
+
+    .introducao {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .cards-sistemas {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cards-sistemas .card {
+      height: 420px;
+    }
+
+    .cards-sistemas .card-img-top {
+      height: 180px;
+    }
+
+    .ficha-card {
+      width: 240px;
+    }
+
+    .ficha-card img {
+      height: 320px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .cards-sistemas {
+      grid-template-columns: 1fr;
+    }
+
+    .cards-sistemas .card {
+      height: auto;
+    }
+
+    .fichas-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ficha-card {
+      width: 85%;
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+    }
+  }
+</style>
+      
+
+
+   
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Vivendo de RPG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link active" href="#oqueeRPG">O que é RPG</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#tiposdepersonagens">Tipos de personagens</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#sistemasderpg">Sistemas de RPG</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#curiosidades">Curiosidades</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#formulariodeinscriçãoparamesadeRPG">junte-se a nossa mesa de RPG</a>
+  </li>
+</ul>
     </div>
-</a> 
-    
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio"> Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#oqueebullyng"> O que é</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#consequencias"> Consequências</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#oqfazer">o que fazer?
-                        
-                    </a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- SEÇÃO INÍCIO -->
-    <section id="inicio" class="hero-section">
-       
-            <img 
-                src="https://pt.quizur.com/_image?href=https://img.quizur.com/f/img645935186c5c94.55492941.jpg?lastEdited=1683567911&w=600&h=600&f=webp"
-                alt="Consequências do bullying"
-            >
-    </section>
+  </div>
+</nav>
 
 
-    <!-- SEÇÃO O QUE É BULLYING - CARDS LADO A LADO -->
-    <section id="oqueebullyng" class="bg-white">
-        <div class="container">
-            <h2 class="display-4 fw-bold text-center mb-5" style="color: #ff4500;">
-                O QUE É BULLYING?
-            </h2>
-            
-            <div class="row g-4">
-                <!-- Card com Imagem -->
-                <div class="col-lg-6">
-                    <div class="bullying-image-card">
-                        <img src="https://theeducationhub.org.nz/wp-content/uploads/2020/09/Bullying-in-secondary-school-scaled.jpg" 
-                             alt="Exemplo de Bullying" class="img-fluid">
-                        <div class="p-4">
-                            <h4 class="text-danger mb-3"> DEFINIÇÃO</h4>
-                            <p class="fs-5">Bullying é um tipo de violência caracterizado por agressões intencionais e repetidas contra uma pessoa. Essas agressões podem ser feitas por um indivíduo ou por um grupo, com o objetivo de intimidar, humilhar, ofender ou constranger alguém.
 
-Ele não acontece apenas por meio de agressão física. O bullying também pode ocorrer com palavras, apelidos maldosos, insultos, ameaças, zombarias, provocações, exclusão social e espalhamento de boatos. Quando isso acontece no ambiente digital, por redes sociais, mensagens ou outras plataformas, é chamado de cyberbullying.
+<section id="oqueeRPG">
+    <h1>O QUE É RPG</h1>
+    <p>RPG é a sigla para Role-Playing Game, que significa “jogo de interpretação de papéis”. Nesse tipo de jogo, os participantes criam personagens e vivem aventuras dentro de uma história imaginária. Cada jogador interpreta seu próprio personagem, tomando decisões, conversando, enfrentando desafios e ajudando a construir a narrativa.
 
-Uma das principais características do bullying é a repetição das atitudes agressivas e a intenção de ferir a outra pessoa. Por isso, ele não deve ser confundido com uma brincadeira saudável ou com um conflito isolado. É um comportamento marcado pela perseguição e pela hostilidade.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card com Tipos -->
-              <div class="col-md-6">
-        <div class="card h-100 border-warning">
-          <img src="https://www.tekkiefam.com/wp-content/uploads/2019/10/diferentes_acosos.jpeg" class="card-img-top" alt="Diversas raças de fantasia incluindo humanos, elfos, anões e outras criaturas míticas">
-          <div class="card-body">
-            <h3 class="card-title">tipos de bullying</h3>
-            <p class="card-text"></p>
-            <ul class="list-group list-group-flush bg-transparent">
-              <li class="list-group-item bg-dark text-light">Bullying físico: envolve agressões ao corpo, como empurrões, socos, chutes, tapas e beliscões.</li>
-              <li class="list-group-item bg-dark text-light">Bullying verbal: acontece por meio de xingamentos, apelidos ofensivos, insultos, provocações e ameaças.</li>
-              <li class="list-group-item bg-dark text-light">ABullying psicológico ou moral: ocorre quando a vítima é intimidada, humilhada, perseguida ou manipulada, causando medo e sofrimento emocional.</li>
-              <li class="list-group-item bg-dark text-light">Bullying social: acontece quando a pessoa é excluída de grupos, ignorada de propósito ou alvo de boatos para prejudicar sua convivência com os outros.</li>
-              <li class="list-group-item bg-dark text-light">Bullying material: envolve esconder, roubar, quebrar ou danificar objetos e pertences da vítima.</li>
-               <li class="list-group-item bg-dark text-light">Cyberbullying: é o bullying praticado pela internet, por redes sociais, mensagens, jogos online ou outros meios digitais.</li>
-            </ul>
-          </div>
-          
-        </div>
-      </div>
-        </div>
-    </section>
+Geralmente, o RPG conta com uma pessoa chamada mestre, narrador ou guia da aventura. Essa pessoa apresenta o mundo, descreve os acontecimentos, interpreta personagens secundários e conduz os desafios que os jogadores encontram pelo caminho. Os outros participantes interpretam os protagonistas da história.
 
-    <!-- SEÇÃO CONSEQUÊNCIAS -->
-<!-- SEÇÃO CONSEQUÊNCIAS -->
-<section id="consequencias" class="bg-light">
-    <div class="container">
-        <h1 class="text-center mb-5" style="color:#dc143c;">Consequências do bullying</h1>
+Uma das partes mais importantes do RPG são os livros de regras. Eles explicam como o jogo funciona, como criar personagens, como resolver batalhas, testes de habilidade, uso de magia, tecnologia, equipamentos e outras situações. Existem muitos tipos de livros de regras, cada um com estilos, mundos, histórias e temas diferentes. Alguns sistemas são mais simples e focados na narrativa, enquanto outros têm regras mais detalhadas para combates, poderes e evolução dos personagens.
 
-    
-            <img 
-                src="https://tse4.mm.bing.net/th/id/OIP.XAV2Pkkx8ux2G795TYlu6wHaHa?w=740&h=740&rs=1&pid=ImgDetMain&o=7&rm=3"
-                alt="Consequências do bullying"
-                class="img-fluid rounded shadow"
-                style="width: 250px; float: right; margin: 0 0 15px 20px;"
-            >
+Os temas de RPG podem variar bastante. Existem aventuras em mundos medievais, com cavaleiros, reis, dragões, magos e castelos; histórias de fantasia, com criaturas mágicas e reinos imaginários; cenários cyberpunk, com cidades futuristas, tecnologia avançada, hackers e megacorporações; histórias de terror, com mistérios, monstros e suspense; aventuras de ficção científica, com planetas, naves espaciais e civilizações alienígenas; além de temas de super-heróis, investigação, pós-apocalipse, piratas, mitologia e muitos outros.
 
-            <p class="fs-5">
-               Consequências do Bullying
+O mais interessante no RPG é que a história não está totalmente pronta. Ela é construída conforme os jogadores fazem escolhas. Por isso, cada partida pode ser única, mesmo usando o mesmo livro de regras ou o mesmo cenário. O RPG estimula a criatividade, a imaginação, o trabalho em equipe, a interpretação e a resolução de problemas, tornando-se uma forma divertida e colaborativa de contar histórias.</p>
 
-O bullying pode causar consequências sérias na vida de quem sofre esse tipo de agressão. Seus efeitos atingem o emocional, o comportamento, a convivência social, o desempenho escolar e até a saúde física e mental da vítima.
+<h2>O que é ficha no RPG de mesa?</h2>
+<p>A ficha no RPG de mesa é como se fosse o “documento” do personagem. Nela ficam registradas todas as informações importantes sobre quem ele é e o que ele consegue fazer durante a aventura.
 
-Entre as consequências mais comuns estão a tristeza, o medo, a vergonha, a insegurança e a baixa autoestima. A pessoa pode passar a se sentir inferior, rejeitada e sem confiança em si mesma. Muitas vezes, também surgem dificuldades para fazer amizades, se expressar e conviver com outras pessoas de forma tranquila.
+Na ficha, normalmente aparecem dados como nome do personagem, raça, classe, idade, aparência, habilidades, pontos de vida, equipamentos, armas, poderes e características da personalidade. Também pode ter informações sobre a história do personagem, seus objetivos, medos, defeitos e relações com outros personagens.
 
-No ambiente escolar, o bullying pode provocar desinteresse pelos estudos, dificuldade de concentração, queda no rendimento e medo de frequentar a escola. Isso prejudica não apenas a aprendizagem, mas também a relação da vítima com o espaço escolar.
+Ela é importante porque ajuda o jogador e o mestre a acompanharem o desenvolvimento do personagem durante o jogo. Por exemplo, quando o personagem luta, usa uma magia, tenta convencer alguém ou precisa fugir de um perigo, a ficha mostra quais são suas capacidades e quais regras devem ser usadas.
+<h3>Exemplos de fichas</h3>
 
-Além disso, o sofrimento causado pelo bullying pode aparecer no corpo e na mente, com sintomas como ansiedade, estresse, insônia, dores de cabeça, cansaço e sofrimento psicológico intenso. Em alguns casos, essas marcas podem permanecer por muito tempo.
+<div class="fichas-container">
+  <div class="ficha-card">
+    <p>Ordem Paranormal</p>
+    <img src="https://th.bing.com/th/id/OIP.qBv_Xq8kXvAbmO9aTr4lSQHaKd?w=208&h=294&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Ficha Ordem Paranormal">
+  </div>
 
-Por isso, o bullying não deve ser visto como brincadeira. Ele é uma forma de violência que afeta profundamente a vida, o bem-estar e o desenvolvimento de quem o sofre.
-            </p>
-       
-    </div>
+  <div class="ficha-card">
+    <p>Sacramento</p>
+    <img src="https://imgv2-2-f.scribdassets.com/img/document/825393669/original/85180f5c7f/1?v=1" alt="Ficha Sacramento">
+  </div>
+
+  <div class="ficha-card">
+    <p>Assimilação</p>
+    <img src="https://imgv2-2-f.scribdassets.com/img/document/928617717/original/2a02ad65d1/1?v=1" alt="Ficha Assimilação">
+  </div>
+</div>
 </section>
 
-    <!-- SEÇÃO NÚMEROS DE TELEFONE -->
-    <section id="oqfazer" class="bg-gradient" style="background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%) !important;">
-        <div class="container">
-            <h2 class="display-3 fw-bold text-center mb-5 text-white py-5">
-            
-            </h2>
-            
-           <section id="oqueebullyng" class="bg-white">
-        <div class="container">
-            <h2 class="display-4 fw-bold text-center mb-5" style="color: #ff4500;">
-             O QUE FAZER?
-            </h2>
-            
-            <div class="row g-4">
-                <!-- Card com Imagem -->
-                <div class="col-lg-6">
-                    <div class="bullying-image-card">
-                        <img src="https://danielalvaroabogados.es/wp-content/uploads/2024/03/denuncia_administrativa.jpg" 
-                        alt="Exemplo de Bullying" class="img-fluid">
-                        <div class="p-4">
-                            <h4 class="text-danger mb-3"> DICAS</h4>
-                            <p class="fs-5">Se você vir alguém sofrendo bullying, ou até mesmo se estiver passando por isso, não fique calado. É muito importante falar e procurar ajuda. Quando o bullying acontece na escola, o primeiro passo é buscar apoio com as pedagogas ou com os responsáveis pelo acompanhamento dos alunos. Se a situação não for resolvida, é necessário procurar a direção da escola. Caso o problema continue, também é possível recorrer à Secretaria de Educação.
 
-Quando o bullying acontece pelas redes sociais, a situação deve ser denunciada, pois o ambiente virtual não torna a agressão menos grave. Nesses casos, é importante buscar ajuda e registrar a ocorrência junto aos canais responsáveis, como a polícia especializada em crimes digitais.
+<section id="tiposdepersonagens">
+    <h2>PERSONAGENS NO RPG</h2>
+    <p>No RPG, podem existir milhares de personagens diferentes, porque cada jogador cria o seu próprio personagem de acordo com sua imaginação, a história do jogo e as regras da campanha. Isso significa que não existe um único tipo de personagem certo ou obrigatório. Cada pessoa pode inventar características únicas, como nome, aparência, personalidade, habilidades, passado e objetivos.
 
-O silêncio só fortalece quem pratica o bullying. Pedir ajuda é uma atitude de coragem e um passo importante para enfrentar essa violência.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card com Tipos -->
-              <div class="col-md-6">
-        <div class="card h-100 border-warning">
-          <img src="https://tse4.mm.bing.net/th/id/OIP.ZCUGdhYgady3SI_O9OeuRwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
-            <h3 class="card-title">numeros de autoridades</h3>
-            <p class="card-text"></p>
-            <ul class="list-group list-group-flush bg-transparent">
-              <li class="list-group-item bg-dark text-light">cvv(centrod de valorização a vida)  ligue 188</li>
-              <li class="list-group-item bg-dark text-light"> Polícia Civil especializada em crimes digitais ligue (41) 3304-6800</li>
-              <li class="list-group-item bg-dark text-light">secretaria de educação de curitiba ligue (41) 3242-5
-              </li>
-              
+Mesmo assim, muitos jogos de RPG usam algumas categorias para ajudar na criação dos personagens. Uma das mais comuns é a raça.
+
+As raças representam o tipo de ser que o personagem é. Em mundos de fantasia, por exemplo, é comum existirem humanos, elfos, anões, orcs, fadas, dragões ou outras criaturas imaginárias. Cada raça pode ter características próprias. Um elfo, por exemplo, costuma ser ágil e ter ligação com a natureza. Um anão pode ser forte, resistente e habilidoso com armas ou mineração. Já os humanos geralmente são mais equilibrados e adaptáveis.
+
+Por isso, o RPG é um jogo tão livre e criativo. Cada personagem pode ser único, com sua própria história, seus poderes, seus defeitos e sua forma de participar da aventura. O mais importante é que o jogador use a imaginação para criar alguém que combine com o mundo do jogo e torne a história mais interessante.</p>
+    <h3>Exemplos de classes no RPG</h3>
+     <ul class="list-group list-group-flush bg-transparent">
+              <li class="list-group-item bg-dark text-light">Guerreiro: personagem forte, geralmente usado em combates corpo a corpo com espadas, machados ou escudos</li>
+              <li class="list-group-item bg-dark text-light">Mago: personagem que usa magia para atacar, se defender ou resolver problemas durante a aventura.</li>
+              <li class="list-group-item bg-dark text-light">Arqueiro: personagem que luta à distância usando arco e flecha, sendo ágil e preciso nos ataques.</li>
+              <li class="list-group-item bg-dark text-light">Curandeiro: personagem responsável por ajudar o grupo, curando ferimentos e protegendo os aliados.</li>
+              <li class="list-group-item bg-dark text-light">Ladino: personagem rápido e silencioso, bom em furtividade, armadilhas e ataques surpresa.</li>
+              <li class="list-group-item bg-dark text-light">Paladino: personagem que mistura força de combate com poderes sagrados, geralmente ligado à justiça e proteção.</li>
+              <li class="list-group-item bg-dark text-light">Bárbaro: personagem muito forte e resistente, que luta com grande intensidade e coragem.</li>
+              <li class="list-group-item bg-dark text-light">Druida: personagem ligado à natureza, podendo usar magia natural e, em alguns jogos, se transformar em animais.</li>
+              <li class="list-group-item bg-dark text-light">Necromante: personagem que usa magias sombrias, geralmente relacionadas a mortos-vivos e forças misteriosas.</li>
+              <li class="list-group-item bg-dark text-light">Bardo: personagem artístico e carismático, que usa música, histórias ou encanto para ajudar o grupo e confundir inimigos.</li>
             </ul>
-          </div>
+
+</section>
+
+
+
+
+
+<section id="sistemasderpg">
+    <h4>ALGUNS SISTEMAS DE RPG FAMOSOS</h4>
+      <div class="cards-sistemas">
+    <div class="card">
+  <img src="https://www.tsrarchive.com/in/pg/pg-3e-core-ldm.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5> D&D</h5>
+    <p class="card-text">Dungeons & Dragons (D&D)
+Dungeons & Dragons, também conhecido como D&D, é um dos sistemas de RPG mais famosos e antigos do mundo. Ele é muito usado em aventuras de fantasia medieval, com guerreiros, magos, elfos, anões, dragões, monstros e tesouros escondidos. Nesse sistema, os jogadores criam personagens e vivem missões em grupo, explorando masmorras, enfrentando inimigos e tomando decisões que mudam o rumo da história.</p>
+  </div>
+</div>
+
+
+  
+<div class="card">
+  <img src="https://tiermaker.com/images/media/hero_images/2024/973629/origens-de-ordem-paranormal-rpg-973629/9736291722297125.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h6>Ordem Paranormal</h6>
+    <p class="card-text">Ordem Paranormal RPG
+Ordem Paranormal RPG é um sistema brasileiro focado em investigação, mistério e terror. Nele, os personagens normalmente fazem parte de grupos que investigam acontecimentos estranhos e sobrenaturais. Durante as aventuras, eles enfrentam criaturas paranormais, descobrem segredos perigosos e precisam tomar decisões difíceis para sobreviver. É um sistema muito conhecido por misturar suspense, ação e medo.</p>
+  </div>
+</div>
+
+
+
+<div class="card">
+  <img src="https://movimentorpg.com.br/wp-content/uploads/2020/09/t20.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h1>Tormenta20</h1>
+    <p class="card-text">Tormenta20 
+        tormenta20 é um sistema de RPG brasileiro de fantasia. Ele se passa em um mundo chamado Arton, cheio de deuses, criaturas mágicas, heróis, vilões e grandes perigos. É um sistema bastante usado por jogadores que gostam de aventuras épicas, batalhas, magia e histórias com clima de fantasia medieval. Um ponto interessante é que ele valoriza bastante a criação de personagens e o desenvolvimento da história.</p>
+</div>
+</div>
+
+
+<div class="card">
+  <img src="https://tse4.mm.bing.net/th/id/OIP.7dpRr5Iz1l7JuS2UaCukuQHaKe?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h2>Call of Cthulhu</h2>
+    <p class="card-text">Call of Cthulhu 
+      Call of Cthulhu é um sistema de RPG de terror e investigação, inspirado nas histórias de H. P. Lovecraft. Diferente de muitos RPGs de fantasia, os personagens costumam ser pessoas comuns, como investigadores, professores, médicos ou jornalistas. Eles acabam descobrindo cultos, mistérios antigos e criaturas assustadoras. Nesse sistema, o medo e a sanidade dos personagens são muito importantes para a história.</p>
+  </div>
+</div>
+
+
+<div class="card">
+  <img src="https://imgv2-2-f.scribdassets.com/img/document/988520730/original/966fb63093/1?v=1" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3>Vampiro: A Máscara</h3>
+    <p class="card-text">Vampiro: A Máscara 
+       Vampiro: A Máscara  é um sistema em que os jogadores interpretam vampiros vivendo escondidos dentro da sociedade humana. A história costuma envolver segredos, conflitos entre clãs, política, poderes sobrenaturais e dilemas morais. Não é um RPG apenas sobre batalhas, mas também sobre escolhas, relações e disputas de poder. Ele tem um clima mais sombrio e adulto.</p>
+  </div>
+</div>
+
+
+<div class="card">
+  <img src="https://imgv2-1-f.scribdassets.com/img/document/789797242/original/d257f53eda/1?v=1" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4>Assimilação</h4>
+    <p class="card-text"> Assimilação
+        Assimilação apresenta um universo pós-apocalíptico, no qual os personagens precisam sobreviver em um mundo transformado e perigoso. O jogo mistura ação, suspense, sobrevivência e interpretação, permitindo que os jogadores enfrentem ameaças enquanto exploram esse novo cenário</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://i.ytimg.com/vi/XmYE72yVvXE/hqdefault.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5>sacramento</h5>
+    <p class="card-text">Sacramento
+Sacramento é um RPG de mesa brasileiro criado por Thiago “Calango” Elias, com regras de Ramon Mineiro. O jogo mistura o estilo de faroeste com elementos brasileiros, como jagunços, cangaceiros, ferrovias, duelos e lendas nacionais.
+
+A história acontece em um cenário chamado Oeste Selvagem, inspirado principalmente em Minas Gerais. O sistema usa dados de seis lados e também baralho comum, criando aventuras com ação, tensão, escolhas difíceis e bastante identidade brasileira.</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://imgv2-2-f.scribdassets.com/img/document/772546616/original/ca0d0a04b5/1?v=1" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h6>Savage Worlds</h6>
+    <p class="card-text">Savage Worlds
+Savage Worlds É um RPG de mesa rápido e flexível, feito para aventuras cheias de ação. Ele pode ser usado em vários cenários, como fantasia, faroeste, terror, ficção científica e aventuras modernas. O objetivo é deixar o jogo mais dinâmico e fácil de adaptar para diferentes histórias.</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://imgv2-1-f.scribdassets.com/img/document/541317367/original/1ee6710977/1?v=1" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h1>3D&T</h1>
+    <p class="card-text">3D&T
+3D&T É um RPG de mesa brasileiro simples e fácil de aprender. Ele costuma ser usado em aventuras inspiradas em animes, desenhos, games e histórias de ação. Por ter regras mais leves, pode ser uma boa opção para quem está começando a jogar RPG. </p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://cf.geekdo-images.com/opengraph/img/ZigDD3TgOgfpodscqLs0plrK-o8=/fit-in/1200x630/pic504631.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h2>GURPS</h2>
+    <p class="card-text"> GURPS
+GURPS É um sistema de RPG de mesa genérico, ou seja, pode ser usado para criar vários tipos de histórias. Com ele, é possível jogar fantasia, ficção científica, terror, investigação, aventura moderna e muitos outros estilos. Ele é conhecido por permitir bastante personalização.</p>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<section id="curiosidades">
+    <h3>Curiosidades sobre RPG</h3>
+    <p>O RPG de mesa é cheio de detalhes curiosos que fazem parte da cultura dos jogadores. Além das aventuras, personagens e dados, existem várias situações e termos que são muito conhecidos por quem joga.
+
+Uma das curiosidades mais famosas é o uso do D20, um dado de 20 lados muito usado em sistemas como Dungeons & Dragons. Ele costuma decidir se uma ação deu certo ou errado, como atacar um inimigo, escapar de uma armadilha ou convencer outro personagem.
+
+Outro ponto importante é o papel do mestre. Ele não joga como os outros jogadores, mas é responsável por narrar a história, controlar os personagens secundários, criar desafios e mostrar as consequências das escolhas feitas pelo grupo.
+
+No RPG também existem os NPCs, que são personagens não controlados pelos jogadores. Eles podem ser vendedores, reis, monstros, vilões, guardas ou qualquer outra pessoa que apareça durante a aventura.
+
+Uma coisa muito comum nas mesas é que os jogadores quase nunca seguem exatamente o plano do mestre. Às vezes, uma missão séria pode virar algo totalmente inesperado, porque uma simples decisão dos personagens muda todo o rumo da história.
+
+Também é interessante saber que nem todo RPG precisa ter combate. Existem sistemas focados em investigação, terror, drama, sobrevivência, política ou apenas interpretação. O mais importante é a construção da história em conjunto.
+
+Algumas campanhas de RPG podem durar meses ou até anos. Nesses casos, os personagens evoluem, criam alianças, enfrentam inimigos antigos e carregam as consequências das escolhas feitas no passado.
+
+O RPG também inspirou muitos jogos digitais. Elementos como classes, níveis, atributos, inventário, missões, evolução de personagem e escolhas na história vieram muito da lógica dos RPGs de mesa.
+
+Por fim, uma das partes mais legais do RPG é que ele depende muito mais da criatividade do que de gráficos. Com uma mesa, alguns dados, fichas e imaginação, os jogadores conseguem criar mundos inteiros e viver histórias únicas.</p>
+
+</section>
+
+
+
+<section id="formulariodeinscriçãoparamesadeRPG">
+
+     <div class="row mt-5 justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <h3 class="text-center mb-4 text-warning">Junte-se à Nossa Campanha</h3>
+          <form>
+           
+            <div class="mb-3">
+              <label for="nome" class="form-label text-light">Nome do Personagem*</label>
+              <input type="text" class="form-control bg-dark text-light" id="nome" placeholder="Ex: Aragorn, Gandalf" required>
+            </div>
+
+           
+            <div class="mb-3">
+              <label for="jogador" class="form-label text-light">Nome do Jogador*</label>
+              <input type="text" class="form-control bg-dark text-light" id="jogador" placeholder="Seu nome real" required>
+            </div>
+
           
+            <div class="mb-3">
+              <label for="email" class="form-label text-light">Email*</label>
+              <input type="email" class="form-control bg-dark text-light" id="email" placeholder="email@exemplo.com" required>
+            </div>
+
+          
+            <div class="mb-3">
+              <label for="senha" class="form-label text-light">Senha*</label>
+              <input type="password" class="form-control bg-dark text-light" id="senha" placeholder="Digite sua senha" required>
+            </div>
+
+           
+            <div class="mb-3">
+              <label for="raca" class="form-label text-light">Raça*</label>
+              <select class="form-select bg-dark text-light" id="raca" required>
+                <option value="" selected disabled>Escolha sua Raça</option>
+                <option value="humano">Humano</option>
+                <option value="elfo">Elfo</option>
+                <option value="anao">Anão</option>
+                <option value="goblin">goblin</option>
+                <option value="minotauro">minotauro</option>
+              </select>
+            </div>
+
+         
+            <div class="mb-3">
+              <label for="classe" class="form-label text-light">Classe*</label>
+              <select class="form-select bg-dark text-light" id="classe" required>
+                <option value="" selected disabled>Escolha sua Classe</option>
+                <option value="guerreiro">Guerreiro</option>
+                <option value="mago">Mago</option>
+                <option value="ladino">Ladino</option>
+                <option value="arqueiro">arqueiro</option>
+                <option value="barbaro">Bárbaro</option>
+              </select>
+            </div>
+
+           
+            <div class="mb-3">
+              <label class="form-label text-light">Nível de Experiência*</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experiencia" id="iniciante" value="iniciante" checked>
+                <label class="form-check-label text-light" for="iniciante">Iniciante</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experiencia" id="intermediario" value="intermediario">
+                <label class="form-check-label text-light" for="intermediario">Intermediário</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experiencia" id="avancado" value="avancado">
+                <label class="form-check-label text-light" for="avancado">Avançado</label>
+              </div>
+            </div>
+
+            
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-warning">Criar Personagem</button>
+            </div>
+          </form>
         </div>
       </div>
-        </div>
-    </section>
-                    <div class="col-md-3">
+    </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</section>
+
+    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>

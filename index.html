@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 ALERTA BULLYING - Denuncie Agora! </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+      
+        
+        body {
+            background: linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #dc143c 100%);
+            background-size: 400% 400%;
+            animation: none;
+            padding-top: 80px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(44, 44, 44, 0.95) !important;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 20px rgba(255, 69, 0, 0.5);
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 120px 20px;
+            position: relative;
+        }
+        
+        .emergency-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc143c, #ff4500);
+            border: 5px solid #fff;
+            color: #fff !important;
+            font-size: 2.2rem;
+            line-height: 70px;
+            text-align: center;
+            display: block;
+            box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7); }
+            50% { box-shadow: 0 12px 45px rgba(220, 20, 60, 1); }
+            100% { box-shadow: 0 12px 35px rgba(220, 20, 60, 0.7); }
+        }
+        
+        .emergency-btn:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 20px 50px rgba(220, 20, 60, 0.9);
+            color: #fff !important;
+            text-decoration: none;
+        }
+        
+        .emergency-btn i {
+            position: relative;
+            top: 2px;
+        }
+        
+        .hero-section {
+            background: rgba(255, 255, 255, 0.98);
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            min-height: calc(100vh - 80px);
+            padding: 0;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,69,0,0.1) 0%, transparent 70%);
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(50px, 50px) rotate(360deg); }
+        }
+        
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff4500, #dc143c, #ff8c00, #ff4500);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 15px rgba(0,0,0,0.4);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 20px rgba(255,69,0,0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(220,20,60,0.8)); }
+        }
+        
+        .hero-subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #dc143c;
+            margin-bottom: 40px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .emergency-panel {
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
+            color: #fff;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(255, 69, 0, 0.6);
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .emergency-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
+            display: block;
+            margin: 20px 0;
+        }
+        
+        .stats-card, .content-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            height: 100%;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .stats-card:hover, .content-card:hover {
+            transform: translateY(-15px);
+            border-color: #ff4500;
+            box-shadow: 0 25px 60px rgba(255,69,0,0.3);
+        }
+        
+        .stats-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff4500, #dc143c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo para cards da seção bullying */
+        .bullying-image-card {
+            height: 100%;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .bullying-image-card:hover {
+            transform: translateY(-15px);
+            border-color: #ff4500;
+            box-shadow: 0 25px 60px rgba(255,69,0,0.3);
+        }
+        
+        .bullying-image-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .hero-section img {
+            width: 100%;
+            height: calc(100vh - 80px);
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            margin: 0;
+            float: none;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão de Emergência Fixo - TELEFONE CENTRALIZADO E MAIOR -->
+    
+<!-- Botão de Emergência Fixo -->
+<a href="#oqfazer" class="emergency-btn" title="Ver números">
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; line-height:1;">
+        <i class="fas fa-phone" style="font-size:1.2rem; margin-bottom:4px;"></i>
+        <span style="font-size:0.8rem; font-weight:bold;"></span>
+    </div>
+</a> 
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio"> Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#oqueebullyng"> O que é</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#consequencias"> Consequências</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#oqfazer">o que fazer?
+                        
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO INÍCIO -->
+    <section id="inicio" class="hero-section">
+       
+            <img 
+                src="https://pt.quizur.com/_image?href=https://img.quizur.com/f/img645935186c5c94.55492941.jpg?lastEdited=1683567911&w=600&h=600&f=webp"
+                alt="Consequências do bullying"
+            >
+    </section>
+
+
+    <!-- SEÇÃO O QUE É BULLYING - CARDS LADO A LADO -->
+    <section id="oqueebullyng" class="bg-white">
+        <div class="container">
+            <h2 class="display-4 fw-bold text-center mb-5" style="color: #ff4500;">
+                O QUE É BULLYING?
+            </h2>
+            
+            <div class="row g-4">
+                <!-- Card com Imagem -->
+                <div class="col-lg-6">
+                    <div class="bullying-image-card">
+                        <img src="https://theeducationhub.org.nz/wp-content/uploads/2020/09/Bullying-in-secondary-school-scaled.jpg" 
+                             alt="Exemplo de Bullying" class="img-fluid">
+                        <div class="p-4">
+                            <h4 class="text-danger mb-3"> DEFINIÇÃO</h4>
+                            <p class="fs-5">Bullying é um tipo de violência caracterizado por agressões intencionais e repetidas contra uma pessoa. Essas agressões podem ser feitas por um indivíduo ou por um grupo, com o objetivo de intimidar, humilhar, ofender ou constranger alguém.
+
+Ele não acontece apenas por meio de agressão física. O bullying também pode ocorrer com palavras, apelidos maldosos, insultos, ameaças, zombarias, provocações, exclusão social e espalhamento de boatos. Quando isso acontece no ambiente digital, por redes sociais, mensagens ou outras plataformas, é chamado de cyberbullying.
+
+Uma das principais características do bullying é a repetição das atitudes agressivas e a intenção de ferir a outra pessoa. Por isso, ele não deve ser confundido com uma brincadeira saudável ou com um conflito isolado. É um comportamento marcado pela perseguição e pela hostilidade.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card com Tipos -->
+              <div class="col-md-6">
+        <div class="card h-100 border-warning">
+          <img src="https://www.tekkiefam.com/wp-content/uploads/2019/10/diferentes_acosos.jpeg" class="card-img-top" alt="Diversas raças de fantasia incluindo humanos, elfos, anões e outras criaturas míticas">
+          <div class="card-body">
+            <h3 class="card-title">tipos de bullying</h3>
+            <p class="card-text"></p>
+            <ul class="list-group list-group-flush bg-transparent">
+              <li class="list-group-item bg-dark text-light">Bullying físico: envolve agressões ao corpo, como empurrões, socos, chutes, tapas e beliscões.</li>
+              <li class="list-group-item bg-dark text-light">Bullying verbal: acontece por meio de xingamentos, apelidos ofensivos, insultos, provocações e ameaças.</li>
+              <li class="list-group-item bg-dark text-light">ABullying psicológico ou moral: ocorre quando a vítima é intimidada, humilhada, perseguida ou manipulada, causando medo e sofrimento emocional.</li>
+              <li class="list-group-item bg-dark text-light">Bullying social: acontece quando a pessoa é excluída de grupos, ignorada de propósito ou alvo de boatos para prejudicar sua convivência com os outros.</li>
+              <li class="list-group-item bg-dark text-light">Bullying material: envolve esconder, roubar, quebrar ou danificar objetos e pertences da vítima.</li>
+               <li class="list-group-item bg-dark text-light">Cyberbullying: é o bullying praticado pela internet, por redes sociais, mensagens, jogos online ou outros meios digitais.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONSEQUÊNCIAS -->
+<!-- SEÇÃO CONSEQUÊNCIAS -->
+<section id="consequencias" class="bg-light">
+    <div class="container">
+        <h1 class="text-center mb-5" style="color:#dc143c;">Consequências do bullying</h1>
+
+    
+            <img 
+                src="https://tse4.mm.bing.net/th/id/OIP.XAV2Pkkx8ux2G795TYlu6wHaHa?w=740&h=740&rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="Consequências do bullying"
+                class="img-fluid rounded shadow"
+                style="width: 250px; float: right; margin: 0 0 15px 20px;"
+            >
+
+            <p class="fs-5">
+               Consequências do Bullying
+
+O bullying pode causar consequências sérias na vida de quem sofre esse tipo de agressão. Seus efeitos atingem o emocional, o comportamento, a convivência social, o desempenho escolar e até a saúde física e mental da vítima.
+
+Entre as consequências mais comuns estão a tristeza, o medo, a vergonha, a insegurança e a baixa autoestima. A pessoa pode passar a se sentir inferior, rejeitada e sem confiança em si mesma. Muitas vezes, também surgem dificuldades para fazer amizades, se expressar e conviver com outras pessoas de forma tranquila.
+
+No ambiente escolar, o bullying pode provocar desinteresse pelos estudos, dificuldade de concentração, queda no rendimento e medo de frequentar a escola. Isso prejudica não apenas a aprendizagem, mas também a relação da vítima com o espaço escolar.
+
+Além disso, o sofrimento causado pelo bullying pode aparecer no corpo e na mente, com sintomas como ansiedade, estresse, insônia, dores de cabeça, cansaço e sofrimento psicológico intenso. Em alguns casos, essas marcas podem permanecer por muito tempo.
+
+Por isso, o bullying não deve ser visto como brincadeira. Ele é uma forma de violência que afeta profundamente a vida, o bem-estar e o desenvolvimento de quem o sofre.
+            </p>
+       
+    </div>
+</section>
+
+    <!-- SEÇÃO NÚMEROS DE TELEFONE -->
+    <section id="oqfazer" class="bg-gradient" style="background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%) !important;">
+        <div class="container">
+            <h2 class="display-3 fw-bold text-center mb-5 text-white py-5">
+            
+            </h2>
+            
+           <section id="oqueebullyng" class="bg-white">
+        <div class="container">
+            <h2 class="display-4 fw-bold text-center mb-5" style="color: #ff4500;">
+             O QUE FAZER?
+            </h2>
+            
+            <div class="row g-4">
+                <!-- Card com Imagem -->
+                <div class="col-lg-6">
+                    <div class="bullying-image-card">
+                        <img src="https://danielalvaroabogados.es/wp-content/uploads/2024/03/denuncia_administrativa.jpg" 
+                        alt="Exemplo de Bullying" class="img-fluid">
+                        <div class="p-4">
+                            <h4 class="text-danger mb-3"> DICAS</h4>
+                            <p class="fs-5">Se você vir alguém sofrendo bullying, ou até mesmo se estiver passando por isso, não fique calado. É muito importante falar e procurar ajuda. Quando o bullying acontece na escola, o primeiro passo é buscar apoio com as pedagogas ou com os responsáveis pelo acompanhamento dos alunos. Se a situação não for resolvida, é necessário procurar a direção da escola. Caso o problema continue, também é possível recorrer à Secretaria de Educação.
+
+Quando o bullying acontece pelas redes sociais, a situação deve ser denunciada, pois o ambiente virtual não torna a agressão menos grave. Nesses casos, é importante buscar ajuda e registrar a ocorrência junto aos canais responsáveis, como a polícia especializada em crimes digitais.
+
+O silêncio só fortalece quem pratica o bullying. Pedir ajuda é uma atitude de coragem e um passo importante para enfrentar essa violência.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card com Tipos -->
+              <div class="col-md-6">
+        <div class="card h-100 border-warning">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.ZCUGdhYgady3SI_O9OeuRwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+            <h3 class="card-title">numeros de autoridades</h3>
+            <p class="card-text"></p>
+            <ul class="list-group list-group-flush bg-transparent">
+              <li class="list-group-item bg-dark text-light">cvv(centrod de valorização a vida)  ligue 188</li>
+              <li class="list-group-item bg-dark text-light"> Polícia Civil especializada em crimes digitais ligue (41) 3304-6800</li>
+              <li class="list-group-item bg-dark text-light">secretaria de educação de curitiba ligue (41) 3242-5
+              </li>
+              
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+        </div>
+    </section>
+                    <div class="col-md-3">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

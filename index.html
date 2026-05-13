@@ -9,7 +9,7 @@
 <body>
     
 <style>
-html {
+    html {
   scroll-behavior: smooth;
 }
 
@@ -21,17 +21,19 @@ body {
 }
 
 .navbar {
-  background-color: #212529;
+  background: #212529;
   padding: 12px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
   color: #ffc107;
   font-weight: bold;
   font-size: 24px;
+  text-decoration: none;
 }
 
 .nav-link {
@@ -39,6 +41,7 @@ body {
   font-weight: 500;
   margin: 0 5px;
   transition: 0.2s;
+  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -47,6 +50,7 @@ body {
 
 .navbar-toggler {
   border: 1px solid #ffc107;
+  background: transparent;
 }
 
 .btn-outline-success {

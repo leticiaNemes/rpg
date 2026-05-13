@@ -9,7 +9,7 @@
 <body>
     
 <style>
-    html {
+  html {
   scroll-behavior: smooth;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 .navbar {
-  background: #212529;
+  background-color: #212529;
   padding: 12px 20px;
   position: sticky;
   top: 0;
@@ -36,15 +36,29 @@ body {
   text-decoration: none;
 }
 
-.nav-link {
+.nav-link,
+.nav-link:visited {
   color: white;
   font-weight: 500;
   margin: 0 5px;
-  transition: 0.2s;
   text-decoration: none;
+  transition: 0.2s;
 }
 
 .nav-link:hover {
+  color: #ffc107;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar a:visited {
+  color: white;
+}
+
+.navbar a:hover {
   color: #ffc107;
 }
 
@@ -352,7 +366,8 @@ p {
   .navbar-brand {
     font-size: 20px;
   }
-    }
+    }    
+
 </style>
       
 
